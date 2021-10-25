@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Card, Form, Alert } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 import { useAuth } from '../contexts/AuthContext'
 
