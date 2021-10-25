@@ -9,7 +9,7 @@ export default function Signup() {
     const passwordRef = useRef()
     const confirmPaswordRef = useRef()
     const history = useHistory()
-    const { signup, user } = useAuth()
+    const { signup, user, googleSignIn } = useAuth()
 
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
@@ -19,6 +19,11 @@ export default function Signup() {
             history.push("/")
         }
     }, [history, user])
+
+    const handleGoogleSignUp = async (e) => {
+        await googleSignIn()
+
+    }
 
     const handleSignUp = async (e) => {
         e.preventDefault()
@@ -60,7 +65,9 @@ export default function Signup() {
                             <Form.Control type="password" ref={confirmPaswordRef} required />
                         </Form.Group>
                         <Button disabled={loading} className='w-100 mt-4' type="submit">Sign Up</Button>
+                        <Button className='w-100 mt-4' onClick={handleGoogleSignUp}>Google Sign In</Button>
                     </Form>
+
                 </Card.Body>
             </Card>
             <div className='w-100 text-center mt-4'>

@@ -28,6 +28,15 @@ export function AuthProvider({ children }) {
         return Auth.sendPasswordResetEmail(auth, email)
     }
 
+    const googleSignIn = () => {
+        const provider = new Auth.GoogleAuthProvider()
+        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        provider.setCustomParameters({
+            'login_hint': 'user@example.com'
+        });
+        return Auth.signInWithPopup(auth, provider)
+    }
+
     useEffect(() => {
         const unsubcribe = Auth.getAuth().onAuthStateChanged(user => {
             setUser(user)
@@ -41,7 +50,8 @@ export function AuthProvider({ children }) {
         signup,
         login,
         logout,
-        resetPassword
+        resetPassword,
+        googleSignIn
     }
 
 
